@@ -1,0 +1,31 @@
+# -----------------------------------------------------------------------------
+#     File type:  Raven Lake RVH ASCII v4.n
+#    Model info:  ENVE 383 HRU Discretization Lab (course demo model)
+#    Created by:  BasinMaker v3.1
+#   Modified by:  Hongren Shen
+# Creation date:  February 2026
+# -----------------------------------------------------------------------------
+
+## Subbasin: 29012806, Lake: Lake_1048361
+:Reservoir   Lake_1048361
+  :SubBasinID  29012806
+  :HRUID   29012806000000
+  :Type RESROUTE_STANDARD   
+  :WeirCoefficient  0.6
+  :CrestWidth     6.5593
+  :MaxDepth 3.5
+  :LakeArea    627606.612398
+  :SeepageParameters   0   0 
+:EndReservoir   
+
+## Subbasin: 29012810, Lake: Lake_1048382
+:Reservoir   Lake_1048382
+  :SubBasinID  29012810
+  :HRUID   29012810000000
+  :Type RESROUTE_STANDARD   
+  :WeirCoefficient  0.6
+  :CrestWidth     6.9467
+  :MaxDepth 2.7
+  :LakeArea    169739.63635
+  :SeepageParameters   0   0 
+:EndReservoir   

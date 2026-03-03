@@ -1,0 +1,78 @@
+# -----------------------------------------------------------------------------
+#     File type:  Raven Main RVH ASCII v4.n
+#    Model info:  ENVE 383 HRU Discretization Lab (course demo model)
+#    Created by:  Hongren Shen
+# Creation date:  February 2026
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# Gauges Info
+# 02GA024 | LAUREL CREEK AT WATERLOO | DrainArea=58190400 m2 | data type=Discharge
+# -----------------------------------------------------------------------------
+
+:SubBasins
+  :Attributes     NAME                DOWNSTREAM_ID     PROFILE             REACH_LENGTH     GAUGED
+  :Units          none                none              none                km               none
+  29011567        sub29011567         29012810          Chn_29011567        1.9328           0
+  29011620        sub29011620         29012806          Chn_29011620        5.7290           0
+  29012806        ODI_792             29011567          Chn_ZERO_LENGTH     ZERO-            0
+  29012810        ODI_789             29016630          Chn_ZERO_LENGTH     ZERO-            0
+  29016630        02GA024&ODI_818     -1                Chn_29016630        5.4423           1
+  29019605        ODI_804             29011620          Chn_ZERO_LENGTH     ZERO-            0
+:EndSubBasins
+
+:SubBasinProperties
+  :Parameters     Q_REFERENCE     TIME_CONC     TIME_TO_PEAK
+  :Units          none            none          none
+  29011567        5.325830        0.045500      0.013650
+  29011620        4.356320        0.099918      0.029975
+  29012806        4.914580        0.051104      0.015331
+  29012810        5.535020        0.035193      0.010558
+  29016630        9.219710        0.104685      0.031406
+  29019605        1.096990        0.066059      0.019818
+:EndSubBasinProperties
+
+:HRUs
+  :Attributes        AREA                 ELEVATION     LATITUDE      LONGITUDE      BASIN_ID     LAND_USE_CLASS       VEG_CLASS        SOIL_PROFILE      AQUIFER_PROFILE     TERRAIN_CLASS     SLOPE        ASPECT
+  :Units             km2                  m             deg           deg            none         none                 none             none              none                none              deg          deg
+  29011567010101     2.5956000000000      345.93        43.483932     -80.567688     29011567     Landuse_Land_HRU     Veg_Land_HRU     Soil_Land_HRU     [NONE]              [NONE]            2.068323     153.404199
+  29011620010101     20.5713000000000     369.81        43.473368     -80.614746     29011620     Landuse_Land_HRU     Veg_Land_HRU     Soil_Land_HRU     [NONE]              [NONE]            3.262719     166.917507
+  29012806000000     0.6276066162800      340.97        43.479611     -80.576567     29012806     LAKE                 LAKE             LAKE              [NONE]              [NONE]            0.803393     179.377418
+  29012806010101     2.8958933837200      351.03        43.477448     -80.582251     29012806     Landuse_Land_HRU     Veg_Land_HRU     Soil_Land_HRU     [NONE]              [NONE]            1.964617     156.328054
+  29012810000000     0.1697396368460      332.87        43.473466     -80.556412     29012810     LAKE                 LAKE             LAKE              [NONE]              [NONE]            1.172705     154.400335
+  29012810010101     1.1505603631500      342.70        43.472323     -80.561044     29012810     Landuse_Land_HRU     Veg_Land_HRU     Soil_Land_HRU     [NONE]              [NONE]            1.834831     163.116970
+  29016630010101     23.2560000000000     352.34        43.459092     -80.549811     29016630     Landuse_Land_HRU     Veg_Land_HRU     Soil_Land_HRU     [NONE]              [NONE]            2.289449     162.468970
+  29019605010101     6.9237000000000      376.80        43.478006     -80.644537     29019605     Landuse_Land_HRU     Veg_Land_HRU     Soil_Land_HRU     [NONE]              [NONE]            3.490921     167.239563
+:EndHRUs
+
+:RedirectToFile  Lakes.rvh
+
+# ------------------------------------------------------------
+# Subbasin Group Definitions
+# Allsubbasins: Subbasins utilized in calibration. Valid for TIME_CONC and TIME_TO_PEAK parameters.
+# RiverChannelSubbasins: Subbasins with non-zero river length.
+# LakeSubbasin_at_<Gauge> and LakeSubbasin_at_<SubId> are exclusive with LakeSubbasin_Ungauged.
+# ------------------------------------------------------------
+
+:SubBasinGroup Allsubbasins
+  29011567  29011620  29012806  29012810  29016630  29019605
+:EndSubBasinGroup
+
+:SubBasinGroup RiverChannelSubbasins
+  29011567  29011620  29016630
+:EndSubBasinGroup
+
+:SubBasinGroup LakeSubbasin_Ungauged
+  29012806  29012810
+:EndSubBasinGroup
+
+:SubBasinGroup AllLakesubbasins
+  29012806  29012810
+:EndSubBasinGroup
+
+
+:SBGroupPropertyMultiplier     Allsubbasins              TIME_CONC                 1.0
+:SBGroupPropertyMultiplier     Allsubbasins              TIME_TO_PEAK              1.0
+:SBGroupPropertyMultiplier     RiverChannelSubbasins     MANNINGS_N                1.0
+:SBGroupPropertyMultiplier     RiverChannelSubbasins     Q_REFERENCE               1.0
+:SBGroupPropertyMultiplier     LakeSubbasin_Ungauged     RESERVOIR_CREST_WIDTH     1.0

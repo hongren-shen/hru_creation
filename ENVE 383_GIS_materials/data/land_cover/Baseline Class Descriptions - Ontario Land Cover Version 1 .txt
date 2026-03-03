@@ -1,0 +1,88 @@
+ONTARIO LAND COVER BASELINE CLASS DESCRIPTIONS
+
+VALUES
+11. Prairie
+Ground layer dominated by prairie graminoids. Tree and shrub cover < 25%.
+
+12. Savannah
+Ground layer dominated by prairie graminoids. Variable cover of open-grown trees. Tree cover: 25 to 35%.
+
+13. Alvar
+Level, unfractured limestone bedrock or patchy mosaic of bare and rock pavement and shallow substrates. Vegetative cover < 25%.
+
+14. Dune
+Exposed sands formed by extant or historical shoreline or aeolian processes. Vegetative cover < 25%.
+
+15. Meadow
+Open herbaceous or graminoid communities. Tree and shrub cover < 25%.
+
+16. Shrubland
+Shrub community. Tree cover < 25%. Shrub cover => 25%.
+
+17. Barren
+Primarily open areas. Includes: exposed non-calcareous bedrock, mineral barren, shorelines, cliffs or bluffs. Tree cover < 10%. Shrub cover < 25%.
+
+18. Sparse treed
+Primarily open areas with sparse tree cover. Includes: exposed non-calcareous bedrock, mineral barren, shorelines, cliffs or bluffs. Tree cover: 10 to 25%.
+
+21. Coniferous forest
+Tree cover => 25%. Upland coniferous tree species => 75% canopy cover > 2m in height.
+
+22. Mixedwood forest
+Tree cover => 25%. Upland coniferous tree species => 25% and upland deciduous tree species => 25% of canopy cover > 2m in height.
+
+23. Deciduous forest
+Tree cover => 25%. Upland deciduous tree species => 75% canopy cover > 2m in height.
+
+24. Transitional forest
+Natural and/or anthropogenic disturbance in areas previously coniferous, mixedwood or deciduous forest. Includes new tree plantings. Tree cover and height in various stages of recovery.
+
+25. Hedge row
+Trees with linear organization and uniform tree height. Tree cover => 60%. Trees > 2m in height.
+
+31. Coniferous treed swamp
+Water table seasonally or permanently at, near or above substrate surface. Tree cover => 25%. Hydrophytic coniferous tree species => 75% of canopy cover.
+
+32. Mixedwood treed swamp
+Water table seasonally or permanently at, near or above substrate surface. Tree cover => 25%. Hydrophytic coniferous tree species => 25% and hydrophytic deciduous tree species => 25% of canopy cover.
+
+33. Deciduous treed swamp
+Water table seasonally or permanently at, near or above substrate surface. Tree cover => 25%. Hydrophytic deciduous tree species => 75% of canopy cover.
+
+34. Transitional treed swamp
+Water table seasonally or permanently at, near or above substrate surface. Natural and/or anthropogenic disturbance in areas previously coniferous, mixedwood or deciduous treed swamp. Includes new tree plantings. Tree cover and height in various stages of recovery. 
+
+35. Thicket swamp
+Water table seasonally or permanently at, near or above substrate surface. Tree cover < 25%. Hydrophytic shrubs => 25%.
+
+36. Bog
+Water table seasonally or permanently at, near or above substrate surface. Ombrotrophic peatland. Open, shrub or treed communities. Tree cover < 25%. Low ericaceous (<2m) shrubs dominate. Sphagnum peat substrate.
+
+37. Fen
+Water table seasonally or permanently at, near or above substrate surface. Mineotrophic peatland. Open, shrub or treed communities. Tree cover < 25%. Sedges, grasses and low (<2m) ericaceous shrubs dominate. Brown moss substrate.
+
+38. Marsh
+Water table seasonally or permanently at, near or above substrate surface. Dominated by graminoids or hydrophytic macrophytes. Tree and shrub cover < 25%.
+
+41. Water
+Water depth > 2 m. Absence of hydrophytic macrophytes, shrub or treed vegetation.
+
+51. Built up area-pervious
+Green space contained by anthropogenic development and/or maintained by human alteration. Includes: urban recreation areas (parks, golf courses, playing fields or ski runs), manicured lawns, urban brownfields or transportion right-of-ways.
+
+52. Anthropogenic
+Anthropogenic land use with impervious surface. Includes: residential, industrial, commercial, civic areas, mines, or aggregate extraction.
+
+53. Cropland
+Agricultural fields managed as row crops, orchards or vineyards.
+
+54. Hay/pasture
+Agricultural fields managed as perennial crops - hay or improved pasture.
+
+55. Transportation
+Highways, roads or airport runways.
+
+99. Unclassified
+Areas with insufficient data for classification.
+
+

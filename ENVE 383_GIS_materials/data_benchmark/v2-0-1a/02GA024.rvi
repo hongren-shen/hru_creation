@@ -1,0 +1,72 @@
+# -----------------------------------------------------------------------------
+#     File type:  Raven Main RVH ASCII v4.n
+#    Model info:  ENVE 383 HRU Discretization Lab (course demo model)
+#    Created by:  Hongren Shen, Bryan Tolson
+# Creation date:  February 2026
+# -----------------------------------------------------------------------------
+
+# --Simulation Details -------------------------  
+:RunName         ohms_model                                                                           
+:StartDate       1980-01-01 00:00:00
+:EndDate         2025-01-01 00:00:00
+:Method          ORDERED_SERIES
+:TimeStep        24:00:00  
+#
+
+# Model options for HBV-light emulation
+# --Model Details -------------------------------
+:Method                   ORDERED_SERIES
+:SoilModel                SOIL_MULTILAYER 3
+:Routing                  ROUTE_DIFFUSIVE_WAVE
+:CatchmentRoute           ROUTE_TRI_CONVOLUTION
+:Evaporation              PET_OUDIN
+:RainSnowFraction         RAINSNOW_HBV
+:PotentialMeltMethod      POTMELT_DEGREE_DAY
+
+#:OroTempCorrect          NONE
+#:OroPrecipCorrect        OROCORR_HBV
+#:OroPETCorrect           OROCORR_HBV
+
+:CloudCoverMethod         CLOUDCOV_NONE
+:PrecipIceptFract         PRECIP_ICEPT_USER   # I don't believe this is HBV-light
+
+# --Hydrologic Processes-------------------------
+:Alias TOPSOIL            SOIL[0]
+:Alias FAST_RESERVOIR     SOIL[1]
+:Alias SLOW_RESERVOIR     SOIL[2]
+
+:HydrologicProcesses
+  :SnowRefreeze           FREEZE_DEGREE_DAY       SNOW_LIQ            SNOW
+  :Precipitation          PRECIP_RAVEN            ATMOS_PRECIP        MULTIPLE
+
+  :SnowBalance            SNOBAL_SIMPLE_MELT      SNOW                SNOW_LIQ
+  :-->Overflow            RAVEN_DEFAULT           SNOW_LIQ            PONDED_WATER
+
+  :Infiltration           INF_HBV                 PONDED_WATER        MULTIPLE
+  :Flush                  RAVEN_DEFAULT           SURFACE_WATER       FAST_RESERVOIR
+  :SoilEvaporation        SOILEVAP_HBV            TOPSOIL             ATMOSPHERE
+  :CapillaryRise          RISE_HBV                FAST_RESERVOIR      TOPSOIL
+  :Percolation            PERC_CONSTANT           FAST_RESERVOIR      SLOW_RESERVOIR
+
+  :Baseflow               BASE_POWER_LAW          FAST_RESERVOIR      SURFACE_WATER  #
+  #:Baseflow              BASE_THRESH_POWER       FAST_RESERVOIR      SURFACE_WATER  # This is WRONG relative to Jansen et al. 2021.  Came out of template.
+  :Baseflow               BASE_THRESH_STOR        FAST_RESERVOIR      SURFACE_WATER
+  :Baseflow               BASE_LINEAR             SLOW_RESERVOIR      SURFACE_WATER
+:EndHydrologicProcesses
+
+#
+:CustomOutput             WATER_YEARLY    AVERAGE       PRECIP_DAILY_AVE  ENTIRE_WATERSHED
+
+:EvaluationPeriod         CALIBRATION     1994-01-01    2024-12-30
+:EvaluationPeriod         VALIDATION      1982-01-01    1993-12-31
+
+:EvaluationMetrics        KLING_GUPTA     KLING_GUPTA_DEVIATION        NASH_SUTCLIFFE        PCT_BIAS
+
+:WriteSubbasinFile
+#:WriteForcingFunctions
+#:SuppressOutput
+#:SilentMode 
+#:DontWriteWatershedStorage
+
+
+

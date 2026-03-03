@@ -1,0 +1,89 @@
+# -----------------------------------------------------------------------------
+#     File type:  Raven Channel RVP ASCII v4.n
+#    Model info:  ENVE 383 HRU Discretization Lab (course demo model)
+#    Created by:  BasinMaker v3.1
+#   Modified by:  Hongren Shen
+# Creation date:  February 2026
+# -----------------------------------------------------------------------------
+
+# Subbasins with zero channel length:
+# Subbasins: 29012806, 29012810, 29019605
+:ChannelProfile          Chn_ZERO_LENGTH          
+  :Bedslope             0.1234500000
+  :SurveyPoints
+    0            380.8024
+       16.0000            376.8024
+       16.2469            376.8024
+       16.2778            376.6790
+       16.3395            376.6790
+       16.3703            376.8024
+       16.6172            376.8024
+       32.6173            380.8024
+  :EndSurveyPoints
+  :RoughnessZones
+    0          0.12345000
+    16.24690000          0.12345000
+    16.37035000          0.12345000
+  :EndRoughnessZones
+:EndChannelProfile
+
+# Subbasin: 29011620, Channel: Chn_29011620
+:ChannelProfile          Chn_29011620          
+  :Bedslope             0.0026893186
+  :SurveyPoints
+    0            373.8144
+       16.0000            369.8144
+       28.3306            369.8144
+       30.3306            368.8144
+       32.4959            368.8144
+       34.4959            369.8144
+       46.8266            369.8144
+       62.8266            373.8144
+  :EndSurveyPoints
+  :RoughnessZones
+    0          0.05000000
+    28.33063031          0.03540557
+    34.49594546          0.05000000
+  :EndRoughnessZones
+:EndChannelProfile
+
+# Subbasin: 29011567, Channel: Chn_29011567
+:ChannelProfile          Chn_29011567          
+  :Bedslope             0.0033818943
+  :SurveyPoints
+    0            349.9325
+       16.0000            345.9325
+       30.1849            345.9325
+       32.1849            344.9325
+       35.2774            344.9325
+       37.2774            345.9325
+       51.4623            345.9325
+       67.4623            349.9325
+  :EndSurveyPoints
+  :RoughnessZones
+    0          0.05576923
+    30.18493060          0.04095330
+    37.27739590          0.05576923
+  :EndRoughnessZones
+:EndChannelProfile
+
+# Subbasin: 29016630, Channel: Chn_29016630
+:ChannelProfile          Chn_29016630          
+  :Bedslope             0.0030112184
+  :SurveyPoints
+    0            356.3365
+       16.0000            352.3365
+       33.9160            352.3365
+       35.9160            351.3365
+       40.8739            351.3365
+       42.8739            352.3365
+       60.7899            352.3365
+       76.7899            356.3365
+  :EndSurveyPoints
+  :RoughnessZones
+    0          0.10000000
+    33.91596364          0.03894126
+    42.87394547          0.10000000
+  :EndRoughnessZones
+:EndChannelProfile
+

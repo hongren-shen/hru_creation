@@ -1,0 +1,124 @@
+# -----------------------------------------------------------------------------
+#     File type:  Raven Main RVH ASCII v4.n
+#    Model info:  ENVE 383 HRU Discretization Lab (course demo model)
+#    Created by:  Hongren Shen, Bryan Tolson
+# Creation date:  February 2026
+# -----------------------------------------------------------------------------
+
+#-----------------------------------------------------------------
+# Global Parameters
+#-----------------------------------------------------------------
+:AvgAnnualRunoff        500                               # Use as is
+:GlobalParameter        RAINSNOW_TEMP             -0.15   # Parameter: -2.5 to 2.5
+:GlobalParameter        RAINSNOW_DELTA            2.0     # Parameter: 0 to 4
+:GlobalParameter        SNOW_SWI                  0.05    # Parameter: 0 to 0.2
+
+#-----------------------------------------------------------------
+# Soil Classes
+#-----------------------------------------------------------------
+:SoilClasses
+  :Attributes,
+  :Units,
+  Soil1_DEFAULT,
+  Soil2_DEFAULT,
+  Soil3_DEFAULT,
+  Soil1_DRAINED,
+  Soil2_DRAINED,
+  Soil3_DRAINED,
+:EndSoilClasses
+
+#-----------------------------------------------------------------
+# Land Use Classes
+#-----------------------------------------------------------------
+:LandUseClasses, 
+:Attributes          ,      IMPERM      ,      FOREST_COV  ,
+:Units               ,      frac        ,      frac        ,
+LAKE                 ,      0           ,      0           ,
+WATER                ,      0           ,      0           ,
+WETLAND              ,      0           ,      1           ,
+FOREST               ,      0           ,      1           ,
+URBAN                ,      4.483876E-01,      4.960206E-01,     # Need calibration
+AGRICULTURE          ,      0           ,      1           ,
+GRASSLAND            ,      0           ,      1           ,
+:EndLandUseClasses
+
+#-----------------------------------------------------------------
+# Vegetation Classes
+#-----------------------------------------------------------------
+:VegetationClasses, 
+:Attributes,      MAX_HT  ,      MAX_LAI,      MAX_LEAF_COND,
+:Units     ,      m       ,      none   ,      mm_per_s     ,
+LAKE       ,      Not_Used,      0      ,      Not_Used     ,
+NO_VEG     ,      Not_Used,      0      ,      Not_Used     ,
+FOREST     ,      Not_Used,      4.42   ,      Not_Used     ,    # Use as is 
+AGRICULTURE,      Not_Used,      2.96   ,      Not_Used     ,    # Use as is 
+GRASSLAND  ,      Not_Used,      3.69   ,      Not_Used     ,    # Use as is  
+:EndVegetationClasses  
+
+#-----------------------------------------------------------------
+# Soil Profiles
+#-----------------------------------------------------------------
+:SoilProfiles
+LAKE                    ,      0,
+WATER                   ,      0,
+DRAINED_AGRICULTURE_SOIL,      3,      Soil1_DRAINED        ,      0.3                             ,      Soil2_DRAINED        ,      5.005376E-01                    ,      Soil3_DRAINED        ,      0.3 ,    # Soil2_DRAINED needs calibration
+DEFAULT_SOIL            ,      3,      Soil1_DEFAULT        ,      0.3                             ,      Soil2_DEFAULT        ,      7.024955E-01                    ,      Soil3_DEFAULT        ,      2.0 ,    # Soil2_DEFAULT needs calibration
+:EndSoilProfiles
+
+#-----------------------------------------------------------------
+# Soil Parameters
+#-----------------------------------------------------------------
+:SoilParameterList
+#													     Par in 01: 1 to 6   Par in 01: 0.3 to 1.0                                       Par in 02: 0 to 6   Par 02,03:0.01-0.8,0.001-0.15              Par in 02: 0.05-0.99   Par in 02: 0 to 100
+:Parameters,          POROSITY,         PET_CORRECTION,       HBV_BETA,         FIELD_CAPACITY,         SAT_WILT,           MAX_CAP_RISE_RATE,    MAX_PERC_RATE,      BASEFLOW_COEFF,               BASEFLOW_N,         BASEFLOW_COEFF2,      STORAGE_THRESHOLD, 
+:Units,               -,                -,                    -,                -,                      -,                  mm/d,                 mm/d,               1/d,                          -,                  1/d,                  mm,
+SOIL_01,              1.0,              1.0,                  1,                0.4,                    0.0,                0,                    0.0,                0.0,                          1.0,                0,                    0.0,
+SOIL_02,              1.0,              1.0,                  0,                0.0,                    0.0,                0,                    1.0,                0.1,                          1.0,                0.5,                  10,
+SOIL_03,              1.0,              1.0,                  0,                0.0,                    0.0,                0,                    0.0,                0.1,                          1.0,                0,                    0.0,
+:EndSoilParameterList
+# --NOTES---------------------------------------
+# # cap rise rate needed for [default]
+# LP=(FIELD_CAPACITY-SAT_WILT) = FIELD_CAPACITY  (setting SAT_WILT to 0 is necessary)
+# FC_HBV=thickness[mm]*porosity    
+# -------------------------------------------
+
+#-----------------------------------------------------------------
+# Land Use Parameters
+#-----------------------------------------------------------------
+:LandUseParameterList                                     Par: 1-5                          Par: 0.1-1.0
+:Parameters,            LAKE_PET_CORR,        MELT_FACTOR,          DD_MELT_TEMP,       REFREEZE_FACTOR,      FOREST_SPARSENESS, 
+:Units,                 -,                    mm/d/degC,            degC,               mm/d/degC,            -,                  # (units not generated by .rvp template)
+LAKE,                   1.0,                  5.0,                  0.0,                0.5,                  0,
+WATER,                  1.0,                  5.0,                  0.0,                0.5,                  0,
+WETLAND,                1.0,                  5.0,                  0.0,                0.5,                  0,
+FOREST,                 1.0,                  5.0,                  0.0,                0.5,                  0,
+URBAN,                  1.0,                  5.0,                  0.0,                0.5,                  0,
+AGRICULTURE,            1.0,                  5.0,                  0.0,                0.5,                  0,
+GRASSLAND,              1.0,                  5.0,                  0.0,                0.5,                  0,
+:EndLandUseParameterList
+
+#-----------------------------------------------------------------
+# Vegetation Parameters
+#-----------------------------------------------------------------
+:VegetationParameterList
+:Parameters,          RAIN_ICEPT_PCT,     SNOW_ICEPT_PCT,     SAI_HT_RATIO, 
+:Units,               -,                  -,                  -,            # (units not generated by .rvp template)
+LAKE,                 0.0,                0.0,                Not_Used,
+NO_VEG,               0.0,                0.0,                Not_Used,
+FOREST,               1,                  1,                  Not_Used,
+AGRICULTURE,          1,                  0.0,                Not_Used,
+GRASSLAND,            1,                  0.0,                Not_Used,
+:EndVegetationParameterList
+
+:SeasonalRelativeLAI
+LAKE       ,      0   ,      0   ,      0   ,      0   ,      0   ,      0   ,      0   ,      0   ,      0   ,      0   ,      0   ,      0   ,
+NO_VEG     ,      0   ,      0   ,      0   ,      0   ,      0   ,      0   ,      0   ,      0   ,      0   ,      0   ,      0   ,      0   ,
+FOREST     ,      0.05,      0.05,      0.10,      0.17,      0.47,      0.96,      0.92,      1.00,      0.76,      0.25,      0.11,      0.06,
+AGRICULTURE,      0.01,      0.02,      0.06,      0.12,      0.24,      0.40,      0.76,      1.00,      0.52,      0.16,      0.08,      0.03,
+GRASSLAND  ,      0.03,      0.04,      0.08,      0.15,      0.35,      0.68,      0.84,      1.00,      0.64,      0.21,      0.10,      0.04,
+:EndSeasonalRelativeLAI
+
+#-----------------------------------------------------------------
+# Channel Properties
+#-----------------------------------------------------------------
+:RedirectToFile         channel_properties.rvp  
